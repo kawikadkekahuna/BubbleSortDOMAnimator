@@ -1,21 +1,21 @@
 //Create divs;
 function BubbleDOMAnimator() {
-
-  generateLength = function(length) {
-      var widthArr = [];
-      for (var i = 0; i < length; i++) {
-        var randomNum = Math.floor(Math.random() * ((length * 2) - 2) + 2);
-        widthArr.push(randomNum);
-      }
-      this.length = length;
-      return widthArr;
-    }
-    //////////////////DOM Main Elements and Nodes//////////////////
+  //////////////////DOM Main Elements and Nodes//////////////////
   var mainContainer = document.getElementById('mainContainer');
   var rowContainer = document.createElement('div');
   rowContainer.id = 'rowContainer';
   var i;
   //////////////////////////////////////////////////////////////
+
+  generateLength = function(length) {
+    var widthArr = [];
+    for (var i = 0; i < length; i++) {
+      var randomNum = Math.floor(Math.random() * ((length * 2) - 2) + 2);
+      widthArr.push(randomNum);
+    }
+    this.length = length;
+    return widthArr;
+  }
 
   this.randomize = function(length) {
     var widthArr = generateLength(length);
