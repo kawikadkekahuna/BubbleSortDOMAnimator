@@ -1,63 +1,53 @@
 //Create divs;
 function BubbleDOMAnimator() {
 
-  generateLength = function() {
-    var widthArr = [];
-    while (widthArr.length !== 100) {
-      var randomNum = Math.floor(Math.random() * (200 - 2) + 2);
-      if (widthArr.indexOf(randomNum) === -1)
+  generateLength = function(length) {
+      var widthArr = [];
+      for (var i = 0; i < length; i++) {
+        var randomNum = Math.floor(Math.random() * ((length * 2) - 2) + 2);
         widthArr.push(randomNum);
+      }
+      this.length = length;
+      return widthArr;
     }
-    return widthArr;
-  }
-
-  //////////////////DOM Main Elements and Nodes//////////////////
+    //////////////////DOM Main Elements and Nodes//////////////////
   var mainContainer = document.getElementById('mainContainer');
+  var rowContainer = document.createElement('div');
+  rowContainer.id = 'rowContainer';
   var i;
   //////////////////////////////////////////////////////////////
 
-
-
-  this.init = function() {
-
-    for (i = 0; i < 100; i++) {
-      var row = document.createElement('div');
-      row.id = 'row' + i;
-      row.style.width = ((1 + i) * 2) + 'px';
-      row.className = 'bubblerow';
-      mainContainer.appendChild(row);
-    }
-  }
-
-  this.randomize = function() {
-    var widthArr = generateLength();
+  this.randomize = function(length) {
+    var widthArr = generateLength(length);
     console.log(widthArr);
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < length; i++) {
       var row = document.createElement('div');
       row.id = 'row' + i;
       row.style.width = widthArr[i] + 'px';
       row.className = 'bubblerow';
-      mainContainer.appendChild(row);
+      rowContainer.appendChild(row);
     }
+    mainContainer.appendChild(rowContainer);
   }
 
   this.sort = function() {
     var base, next;
-    for (var i = 0; i < 100 - 0; i++) {
-      for (var j = 0; j < 99; j++) {
+    if (document.getElementById('rowContainer')) {
+      for (var j = 0; j < this.length - 1; j++) {
         base = document.getElementById('row' + j).style.width;
-        // console.log('base' + base);
-
         next = document.getElementById('row' + (j + 1)).style.width;
-        
-        // console.log('next' + next);
+
         if (parseInt(base) > parseInt(next)) {
-          document.getElementById('row'+j).style.width = next;
-          document.getElementById('row'+(j+1)).style.width = base;
+          document.getElementById('row' + j).style.width = next;
+          document.getElementById('row' + (j + 1)).style.width = base;
         }
       }
     }
-
-
+  }
+  this.start = function() {
+    setInterval(this.sort, 1);
+  }
+  this.reset = function() {
+    document.getElementById('mainContainer').removeChild(document.getElementById('rowContainer'));
   }
 }
