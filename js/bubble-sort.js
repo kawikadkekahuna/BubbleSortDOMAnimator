@@ -46,7 +46,7 @@ function BubbleDOMAnimator() {
     }
   }
   this.start = function() {
-    setInterval(this.sort, 1);
+    setInterval(this.sort, 50);
   }
   this.reset = function() {
     document.getElementById('mainContainer').removeChild(document.getElementById('rowContainer'));
