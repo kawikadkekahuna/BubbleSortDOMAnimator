@@ -32,17 +32,22 @@ function BubbleDOMAnimator() {
 
   this.sort = function() {
     var base, next;
-    for (var j = 0; j < this.length - 1; j++) {
-      base = document.getElementById('row' + j).style.width;
-      next = document.getElementById('row' + (j + 1)).style.width;
+    if (document.getElementById('rowContainer')) {
+      for (var j = 0; j < this.length - 1; j++) {
+        base = document.getElementById('row' + j).style.width;
+        next = document.getElementById('row' + (j + 1)).style.width;
 
-      if (parseInt(base) > parseInt(next)) {
-        document.getElementById('row' + j).style.width = next;
-        document.getElementById('row' + (j + 1)).style.width = base;
+        if (parseInt(base) > parseInt(next)) {
+          document.getElementById('row' + j).style.width = next;
+          document.getElementById('row' + (j + 1)).style.width = base;
+        }
       }
     }
   }
   this.start = function() {
-    setInterval(this.sort, 50);
+    setInterval(this.sort, 1);
   }
-} 
+  this.reset = function() {
+    document.getElementById('mainContainer').removeChild(document.getElementById('rowContainer'));
+  }
+}
