@@ -21,13 +21,13 @@ window.onload = function() {
   });
 
 
-var resetBtn = document.createElement('div');
-resetBtn.innerHTML = 'Reset';
-resetBtn.addEventListener('click', function() {
+  var resetBtn = document.createElement('div');
+  resetBtn.innerHTML = 'Reset';
+  resetBtn.addEventListener('click', function() {
 
-  bSort.reset();
-  
-});
+    bSort.reset();
+
+  });
 
   main.appendChild(resetBtn);
   main.appendChild(inputField);
