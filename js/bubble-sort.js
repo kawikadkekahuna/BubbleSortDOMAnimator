@@ -5,11 +5,12 @@ function BubbleDOMAnimator() {
   var rowContainer = document.createElement('div');
   rowContainer.id = 'rowContainer';
   var i;
+  var widthArr;
   //////////////////////////////////////////////////////////////
 
   generateLength = function(length) {
-    var widthArr = [];
-    for (var i = 0; i < length; i++) {
+    widthArr = [];
+    for (i = 0; i < length; i++) {
       var randomNum = Math.floor(Math.random() * ((length * 2) - 2) + 2);
       widthArr.push(randomNum);
     }
@@ -18,8 +19,8 @@ function BubbleDOMAnimator() {
   }
 
   this.randomize = function(length) {
-    var widthArr = generateLength(length);
-    console.log(widthArr);
+    widthArr = generateLength(length);
+    
     for (i = 0; i < length; i++) {
       var row = document.createElement('div');
       row.id = 'row' + i;
@@ -33,13 +34,13 @@ function BubbleDOMAnimator() {
   this.sort = function() {
     var base, next;
     if (document.getElementById('rowContainer')) {
-      for (var j = 0; j < this.length - 1; j++) {
-        base = document.getElementById('row' + j).style.width;
-        next = document.getElementById('row' + (j + 1)).style.width;
+      for (i = 0; i < this.length - 1; i++) {
+        base = document.getElementById('row' + i).style.width;
+        next = document.getElementById('row' + (i + 1)).style.width;
 
         if (parseInt(base) > parseInt(next)) {
-          document.getElementById('row' + j).style.width = next;
-          document.getElementById('row' + (j + 1)).style.width = base;
+          document.getElementById('row' + i).style.width = next;
+          document.getElementById('row' + (i + 1)).style.width = base;
         }
       }
     }
