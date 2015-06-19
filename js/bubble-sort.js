@@ -25,7 +25,7 @@ function BubbleDOMAnimator() {
       var row = document.createElement('div');
       row.id = 'row' + i;
       row.style.width = widthArr[i] + 'px';
-      row.className = 'bubblerow';
+      row.className = 'bubbleRow';
       rowContainer.appendChild(row);
     }
     mainContainer.appendChild(rowContainer);
