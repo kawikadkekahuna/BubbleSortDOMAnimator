@@ -1,13 +1,13 @@
 //Create divs;
 function BubbleDOMAnimator() {
 
-  generateLength = function() {
+  generateLength = function(length) {
     var widthArr = [];
-    while (widthArr.length !== 100) {
-      var randomNum = Math.floor(Math.random() * (200 - 2) + 2);
-      if (widthArr.indexOf(randomNum) === -1)
-        widthArr.push(randomNum);
+    for(var i = 0; i < length; i++){
+      var randomNum = Math.floor(Math.random() * ((length*2) - 2) + 2);
+      widthArr.push(randomNum);
     }
+    this.length = length;
     return widthArr;
   }
   //////////////////DOM Main Elements and Nodes//////////////////
@@ -15,10 +15,10 @@ function BubbleDOMAnimator() {
   var i;
   //////////////////////////////////////////////////////////////
 
-  this.randomize = function() {
-    var widthArr = generateLength();
+  this.randomize = function(length) {
+    var widthArr = generateLength(length);
     console.log(widthArr);
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < length; i++) {
       var row = document.createElement('div');
       row.id = 'row' + i;
       row.style.width = widthArr[i] + 'px';
@@ -29,7 +29,7 @@ function BubbleDOMAnimator() {
 
   this.sort = function() {
     var base, next;
-    for (var j = 0; j < 99; j++) {
+    for (var j = 0; j < this.length - 1; j++) {
       base = document.getElementById('row' + j).style.width;
       next = document.getElementById('row' + (j + 1)).style.width;
 
@@ -40,6 +40,7 @@ function BubbleDOMAnimator() {
     }
   }
   this.start = function(){
-    setInterval(this.sort,100);
+    setInterval(this.sort,50);
   }
 }
+
