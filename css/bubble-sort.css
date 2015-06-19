@@ -4,3 +4,30 @@
   border:1px black;
   margin-bottom:1px;
 }
+
+#startBtn{
+  display:inline-block;
+  position:relative;
+  text-align: center;
+  line-height: 35px;
+  font-weight:bold;
+  border:5px dotted black;
+  width:90px;
+  height:40px;
+  
+}
+
+#startBtn:hover{
+  background-color:;
+  border-color:yellow;
+}
+
+#generateBtn{
+  display:inline-block;
+  position: relative;
+  font-weight:bold;
+  width:100px;
+  top:40px;
+  border:3px solid black;
+  text-align:40px;
+}
